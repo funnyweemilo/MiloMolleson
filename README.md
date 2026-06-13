@@ -1,7 +1,7 @@
 # Milo Molleson — Portfolio Site
 
 Personal art portfolio hosted on GitHub Pages.  
-Live at: [miломоллесон.github.io](https://yourusername.github.io) ← update this
+Live at: https://MiloMolleson.github.io
 
 ## Structure
 
