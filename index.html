@@ -4,22 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Milo Molleson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --fg: #e8e4dc;
-      --fg-muted: #888;
+      --fg: #ddd9d0;
+      --fg-muted: #666;
+      --fg-faint: #444;
       --bg: #0e0e0e;
-      --border: rgba(255,255,255,0.1);
     }
 
-    html { font-size: 16px; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--fg);
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'EB Garamond', Georgia, serif;
       min-height: 100vh;
     }
 
@@ -30,224 +31,202 @@
       z-index: 100;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 1.4rem 1.6rem;
-      mix-blend-mode: normal;
+      align-items: center;
+      padding: 1.6rem 2rem;
     }
 
     nav .site-name {
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
       color: var(--fg);
       text-decoration: none;
+      text-transform: uppercase;
     }
 
-    nav .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
+    nav .nav-links { display: flex; gap: 2.4rem; }
 
     nav .nav-links a {
-      font-size: 0.82rem;
-      letter-spacing: 0.06em;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       color: var(--fg-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.3s;
     }
 
     nav .nav-links a:hover { color: var(--fg); }
 
-    /* ── Hero — full-bleed first image ── */
-    .hero {
-      width: 100%;
+    /* ── Opening title ── */
+    .opening {
       height: 100vh;
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2rem 4rem;
     }
 
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0.75;
-    }
-
-    .hero-label {
-      position: absolute;
-      bottom: 2rem;
-      left: 1.8rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: rgba(232,228,220,0.55);
+    .opening h1 {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: 0.25em;
       text-transform: uppercase;
+      color: var(--fg);
+      line-height: 1.2;
     }
 
-    /* ── Staggered grid ── */
-    .works {
-      padding: 0;
-    }
-
-    /* Row: large left + small right */
-    .row-a {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2px;
-    }
-
-    /* Row: small left + large right */
-    .row-b {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2px;
-      margin-top: 2px;
-    }
-
-    /* Row: three equal */
-    .row-c {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px;
-      margin-top: 2px;
-    }
-
-    .work-item {
-      position: relative;
-      overflow: hidden;
-      background: #1a1a1a;
-    }
-
-    .row-a .work-item,
-    .row-b .work-item { aspect-ratio: 4/3; }
-    .row-c .work-item  { aspect-ratio: 1/1; }
-
-    .work-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0.82;
-      transition: opacity 0.35s ease, transform 0.45s ease;
-    }
-
-    .work-item:hover img {
-      opacity: 1;
-      transform: scale(1.02);
-    }
-
-    .work-item .info {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .work-item:hover .info { opacity: 1; }
-
-    .work-item .info span {
-      display: block;
-      font-size: 0.75rem;
-      letter-spacing: 0.07em;
-      color: rgba(232,228,220,0.8);
-    }
-
-    .work-item .info .year {
-      color: rgba(232,228,220,0.45);
-      font-size: 0.7rem;
-      margin-top: 2px;
-    }
-
-    /* ── Marquee strip ── */
-    .marquee-wrap {
-      border-top: 0.5px solid var(--border);
-      border-bottom: 0.5px solid var(--border);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 0.9rem 0;
-      margin: 4rem 0;
-    }
-
-    .marquee-inner {
-      display: inline-block;
-      animation: marquee 18s linear infinite;
-    }
-
-    .marquee-inner span {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .opening .tagline {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      font-style: italic;
       color: var(--fg-muted);
-      margin-right: 3rem;
+      letter-spacing: 0.02em;
     }
 
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ── About strip ── */
-    .about-strip {
+    /* ── Work sections ── */
+    .work {
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      padding: 5rem 1.8rem 6rem;
-      border-top: 0.5px solid var(--border);
-      max-width: 1100px;
+      grid-template-columns: 3fr 1fr;
+      gap: 0;
+      padding: 8vh 0;
+      align-items: center;
+    }
+
+    /* Alternate: text left, image right */
+    .work.reverse {
+      grid-template-columns: 1fr 3fr;
+    }
+
+    .work.reverse .work-image { order: 2; }
+    .work.reverse .work-text  { order: 1; padding: 4rem 3rem 4rem 2rem; }
+
+    .work-image {
+      position: relative;
+      width: 100%;
+    }
+
+    .work-image img {
+      width: 100%;
+      height: 85vh;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .work-text {
+      padding: 4rem 2rem 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.4rem;
+    }
+
+    .work-text .work-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    .work-text .work-line {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--fg-muted);
+      line-height: 1.9;
+      max-width: 28ch;
+    }
+
+    .work-text .work-meta {
+      font-size: 0.72rem;
+      color: var(--fg-faint);
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+      margin-top: 0.6rem;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 1px;
+      height: 6rem;
+      background: var(--fg-faint);
+      margin: 0 auto;
+      opacity: 0.3;
+    }
+
+    /* ── About ── */
+    .about {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem;
+      max-width: 680px;
       margin: 0 auto;
     }
 
-    .about-strip h2 {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
+    .about-inner {}
+
+    .about-inner h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .about-inner p {
+      font-size: 1.1rem;
+      line-height: 2;
+      color: var(--fg-muted);
+      font-style: italic;
+    }
+
+    .about-inner .exh-link {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--fg-muted);
-      margin-bottom: 1.4rem;
-      font-weight: 400;
-    }
-
-    .about-strip p {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: rgba(232,228,220,0.72);
-    }
-
-    .about-strip .exhibitions-link {
-      margin-top: 2rem;
-    }
-
-    .about-strip .exhibitions-link a {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--fg);
       text-decoration: none;
-      border-bottom: 0.5px solid rgba(232,228,220,0.35);
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
+      border-bottom: 0.5px solid var(--fg-faint);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
     }
 
-    .about-strip .exhibitions-link a:hover {
-      border-color: var(--fg);
+    .about-inner .exh-link:hover {
+      color: var(--fg);
+      border-color: var(--fg-muted);
     }
 
     /* ── Footer ── */
     footer {
-      border-top: 0.5px solid var(--border);
-      padding: 1.6rem 1.8rem;
+      border-top: 0.5px solid #1e1e1e;
+      padding: 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     footer p {
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      color: #444;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      color: var(--fg-faint);
     }
 
     footer a {
-      color: #555;
+      color: var(--fg-faint);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -266,123 +245,82 @@
     </div>
   </nav>
 
-  <!-- Hero: replace src with your main/feature image -->
-  <div class="hero">
-    <img src="/MiloMolleson/images/The%20Rat%20King.jpg" alt="Featured work" />
-    <div class="hero-label">The Rat King</div>
+  <!-- Opening -->
+  <div class="opening">
+    <h1>Milo<br>Molleson</h1>
+    <p class="tagline">Illustration &amp; drawing</p>
   </div>
 
-  <section class="works">
-
-    <!-- Row A: big left, small right -->
-    <div class="row-a">
-      <div class="work-item">
-        <img src="/MiloMolleson/images/Alcohol%20my%20Lover.jpg" alt="" />
-        <div class="info">
-          <span>Alcohol my Lover</span>
-          <span class="year">2024</span>
-        </div>
-      </div>
-      <div class="work-item">
-        <img src="/MiloMolleson/images/I%20Need%20Some%20Sleep.jpg" alt="" />
-        <div class="info">
-          <span>I Need Some Sleep</span>
-          <span class="year">2024</span>
-        </div>
-      </div>
+  <!-- Work 1: Alcohol my Lover — image left, text right -->
+  <section class="work">
+    <div class="work-image">
+      <img src="/MiloMolleson/images/Alcohol%20my%20Lover.jpg" alt="Alcohol my Lover" />
     </div>
-
-    <!-- Row B: small left, big right -->
-    <div class="row-b">
-      <div class="work-item">
-        <img src="/MiloMolleson/images/Shower%20Demons.jpg" alt="" />
-        <div class="info">
-          <span>Shower Demons</span>
-          <span class="year">2023</span>
-        </div>
-      </div>
-      <div class="work-item">
-        <img src="/MiloMolleson/images/The%20Rat%20King.jpg" alt="" />
-        <div class="info">
-          <span>The Rat King</span>
-          <span class="year">2024</span>
-        </div>
-      </div>
+    <div class="work-text">
+      <div class="work-title">Alcohol my Lover</div>
+      <div class="work-line">I keep going crawling back.<br>Like a lover I know is no good<br>but I can't leave.</div>
+      <div class="work-meta">Fine-liner pen, watercolour &amp; charcoal<br>600 × 800mm · 2024</div>
     </div>
-
-    <!-- Row C: three equal -->
-    <div class="row-c">
-      <div class="work-item">
-        <img src="/MiloMolleson/images/Alcohol%20my%20Lover.jpg" alt="" />
-        <div class="info">
-          <span>Alcohol my Lover</span>
-          <span class="year">2023</span>
-        </div>
-      </div>
-      <div class="work-item">
-        <img src="/MiloMolleson/images/I%20Need%20Some%20Sleep.jpg" alt="" />
-        <div class="info">
-          <span>I Need Some Sleep</span>
-          <span class="year">2023</span>
-        </div>
-      </div>
-      <div class="work-item">
-        <img src="/MiloMolleson/images/Shower%20Demons.jpg" alt="" />
-        <div class="info">
-          <span>Shower Demons</span>
-          <span class="year">2022</span>
-        </div>
-      </div>
-    </div>
-
   </section>
 
-  <!-- Scrolling text strip -->
-  <div class="marquee-wrap">
-    <div class="marquee-inner">
-      <span>Illustration</span>
-      <span>Drawing</span>
-      <span>Milo Molleson</span>
-      <span>Amsterdam</span>
-      <span>Illustration</span>
-      <span>Drawing</span>
-      <span>Milo Molleson</span>
-      <span>Amsterdam</span>
-      <span>Illustration</span>
-      <span>Drawing</span>
-      <span>Milo Molleson</span>
-      <span>Amsterdam</span>
-      <span>Illustration</span>
-      <span>Drawing</span>
-      <span>Milo Molleson</span>
-      <span>Amsterdam</span>
-    </div>
-  </div>
+  <div class="divider"></div>
 
-  <section id="about" class="about-strip">
-    <div>
+  <!-- Work 2: Shower Demons — image right, text left -->
+  <section class="work reverse">
+    <div class="work-image">
+      <img src="/MiloMolleson/images/Shower%20Demons.jpg" alt="Shower Demons" />
+    </div>
+    <div class="work-text">
+      <div class="work-title">Shower Demons</div>
+      <div class="work-line">Just trying to wash yourself clean<br>and you just can't<br>wash away the feeling.</div>
+      <div class="work-meta">Fine-liner pen, acrylic &amp; tipex<br>210 × 297mm · 2021</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Work 3: I Need Some Sleep — image left, text right -->
+  <section class="work">
+    <div class="work-image">
+      <img src="/MiloMolleson/images/I%20Need%20Some%20Sleep.jpg" alt="I Need Some Sleep" />
+    </div>
+    <div class="work-text">
+      <div class="work-title">I Need Some Sleep</div>
+      <div class="work-line">The mess felt part of it,<br>somehow perfect.</div>
+      <div class="work-meta">2024</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Work 4: The Rat King — image right, text left -->
+  <section class="work reverse">
+    <div class="work-image">
+      <img src="/MiloMolleson/images/The%20Rat%20King.jpg" alt="The Rat King" />
+    </div>
+    <div class="work-text">
+      <div class="work-title">The Rat King</div>
+      <div class="work-line">I was close to god.<br>I could hear him breathing<br>the way old men do.</div>
+      <div class="work-meta">2024</div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="about-inner">
       <h2>About</h2>
       <p>
-        A short paragraph about you and your practice goes here.
-        Where you're based, what draws you to illustration,
-        the themes or ideas that run through your work.
-        Keep it brief — let the images speak.
+        A few lines about you and your practice go here.
+        Where you're based, what draws you to the work,
+        what you keep returning to.
       </p>
-    </div>
-    <div>
-      <h2>Exhibitions &amp; previous work</h2>
-      <p>
-        Selected shows, residencies, and published work.
-      </p>
-      <div class="exhibitions-link">
-        <a href="exhibitions.html">View full list →</a>
-      </div>
+      <a class="exh-link" href="exhibitions.html">Exhibitions &amp; previous work →</a>
     </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Milo Molleson</p>
-    <p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
+    <p><a href="mailto:your@email.com">Contact</a></p>
   </footer>
 
 </body>
