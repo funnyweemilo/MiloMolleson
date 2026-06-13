@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibitions — Milo Molleson</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fg: #e8e4dc;
+      --fg-muted: #888;
+      --bg: #0e0e0e;
+      --border: rgba(255,255,255,0.1);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Times New Roman', Times, serif;
+      min-height: 100vh;
+    }
+
+    /* ── Nav (same as index) ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.4rem 1.6rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    nav .site-name {
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    nav .nav-links { display: flex; gap: 2rem; }
+
+    nav .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active { color: var(--fg); }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 4rem 1.8rem 3rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      font-weight: 400;
+    }
+
+    /* ── Exhibition list ── */
+    .exh-list {
+      max-width: 900px;
+      padding: 0 1.8rem;
+    }
+
+    .exh-year-group {
+      margin-top: 3.5rem;
+    }
+
+    .exh-year {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .exh-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 2rem;
+      padding: 1.1rem 0;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .exh-item:last-child {
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .exh-title {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--fg);
+      line-height: 1.4;
+    }
+
+    .exh-meta {
+      font-size: 0.78rem;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+      margin-top: 0.3rem;
+    }
+
+    .exh-type {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      white-space: nowrap;
+      align-self: start;
+      padding-top: 0.2rem;
+    }
+
+    /* ── Image strip (optional, shown if you add images) ── */
+    .image-strip {
+      display: flex;
+      gap: 2px;
+      margin: 5rem 0 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .image-strip::-webkit-scrollbar { display: none; }
+
+    .strip-item {
+      flex: 0 0 auto;
+      width: 320px;
+      height: 240px;
+      background: #1a1a1a;
+      overflow: hidden;
+    }
+
+    .strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .strip-item:hover img { opacity: 1; }
+
+    .strip-label {
+      padding: 0 1.8rem;
+      margin-top: 0.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--fg-muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6rem;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #444;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--fg-muted); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="site-name" href="index.html">Milo Molleson</a>
+    <div class="nav-links">
+      <a href="exhibitions.html" class="active">Exhibitions</a>
+      <a href="index.html#about">About</a>
+      <a href="mailto:your@email.com">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Exhibitions &amp; previous work</h1>
+  </div>
+
+  <div class="exh-list">
+
+    <!-- ── 2024 ── -->
+    <div class="exh-year-group">
+      <div class="exh-year">2024</div>
+
+      <div class="exh-item">
+        <div>
+          <div class="exh-title">Exhibition title here</div>
+          <div class="exh-meta">Venue name, City</div>
+        </div>
+        <div class="exh-type">Solo</div>
+      </div>
+
+      <div class="exh-item">
+        <div>
+          <div class="exh-title">Group show title</div>
+          <div class="exh-meta">Gallery name, City</div>
+        </div>
+        <div class="exh-type">Group</div>
+      </div>
+
+    </div>
+
+    <!-- ── 2023 ── -->
+    <div class="exh-year-group">
+      <div class="exh-year">2023</div>
+
+      <div class="exh-item">
+        <div>
+          <div class="exh-title">Exhibition title here</div>
+          <div class="exh-meta">Venue name, City</div>
+        </div>
+        <div class="exh-type">Group</div>
+      </div>
+
+      <div class="exh-item">
+        <div>
+          <div class="exh-title">Published work or residency title</div>
+          <div class="exh-meta">Publisher / Organisation</div>
+        </div>
+        <div class="exh-type">Print</div>
+      </div>
+
+    </div>
+
+    <!-- ── 2022 ── -->
+    <div class="exh-year-group">
+      <div class="exh-year">2022</div>
+
+      <div class="exh-item">
+        <div>
+          <div class="exh-title">Exhibition title here</div>
+          <div class="exh-meta">Venue name, City</div>
+        </div>
+        <div class="exh-type">Solo</div>
+      </div>
+
+    </div>
+
+    <!-- Add more years by copying a .exh-year-group block -->
+
+  </div>
+
+  <!-- Optional: a horizontal scroll of documentation photos -->
+  <!-- Remove this section if you don't have installation photos -->
+  <div class="image-strip">
+    <div class="strip-item"><img src="images/exh1.jpg" alt="Exhibition documentation" /></div>
+    <div class="strip-item"><img src="images/exh2.jpg" alt="Exhibition documentation" /></div>
+    <div class="strip-item"><img src="images/exh3.jpg" alt="Exhibition documentation" /></div>
+    <div class="strip-item"><img src="images/exh4.jpg" alt="Exhibition documentation" /></div>
+  </div>
+  <div class="strip-label">Installation views</div>
+
+  <footer>
+    <p>&copy; 2025 Milo Molleson</p>
+    <p><a href="index.html">← Back to work</a></p>
+  </footer>
+
+</body>
+</html>

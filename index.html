@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milo Molleson</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fg: #e8e4dc;
+      --fg-muted: #888;
+      --bg: #0e0e0e;
+      --border: rgba(255,255,255,0.1);
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Times New Roman', Times, serif;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.4rem 1.6rem;
+      mix-blend-mode: normal;
+    }
+
+    nav .site-name {
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav .nav-links a:hover { color: var(--fg); }
+
+    /* ── Hero — full-bleed first image ── */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.75;
+    }
+
+    .hero-label {
+      position: absolute;
+      bottom: 2rem;
+      left: 1.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: rgba(232,228,220,0.55);
+      text-transform: uppercase;
+    }
+
+    /* ── Staggered grid ── */
+    .works {
+      padding: 0;
+    }
+
+    /* Row: large left + small right */
+    .row-a {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2px;
+    }
+
+    /* Row: small left + large right */
+    .row-b {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    /* Row: three equal */
+    .row-c {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .row-a .work-item,
+    .row-b .work-item { aspect-ratio: 4/3; }
+    .row-c .work-item  { aspect-ratio: 1/1; }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.82;
+      transition: opacity 0.35s ease, transform 0.45s ease;
+    }
+
+    .work-item:hover img {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    .work-item .info {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .work-item:hover .info { opacity: 1; }
+
+    .work-item .info span {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.07em;
+      color: rgba(232,228,220,0.8);
+    }
+
+    .work-item .info .year {
+      color: rgba(232,228,220,0.45);
+      font-size: 0.7rem;
+      margin-top: 2px;
+    }
+
+    /* ── Marquee strip ── */
+    .marquee-wrap {
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.9rem 0;
+      margin: 4rem 0;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+    }
+
+    .marquee-inner span {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-right: 3rem;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── About strip ── */
+    .about-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 5rem 1.8rem 6rem;
+      border-top: 0.5px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-strip h2 {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+
+    .about-strip p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(232,228,220,0.72);
+    }
+
+    .about-strip .exhibitions-link {
+      margin-top: 2rem;
+    }
+
+    .about-strip .exhibitions-link a {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 0.5px solid rgba(232,228,220,0.35);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .about-strip .exhibitions-link a:hover {
+      border-color: var(--fg);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #444;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--fg-muted); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="site-name" href="index.html">Milo Molleson</a>
+    <div class="nav-links">
+      <a href="exhibitions.html">Exhibitions</a>
+      <a href="#about">About</a>
+      <a href="mailto:your@email.com">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero: replace src with your main/feature image -->
+  <div class="hero">
+    <img src="images/hero.jpg" alt="Featured work" />
+    <div class="hero-label">Selected works</div>
+  </div>
+
+  <section class="works">
+
+    <!-- Row A: big left, small right -->
+    <div class="row-a">
+      <div class="work-item">
+        <img src="images/work1.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2024</span>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="images/work2.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row B: small left, big right -->
+    <div class="row-b">
+      <div class="work-item">
+        <img src="images/work3.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2023</span>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="images/work4.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row C: three equal -->
+    <div class="row-c">
+      <div class="work-item">
+        <img src="images/work5.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2023</span>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="images/work6.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2023</span>
+        </div>
+      </div>
+      <div class="work-item">
+        <img src="images/work7.jpg" alt="" />
+        <div class="info">
+          <span>Title</span>
+          <span class="year">2022</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Scrolling text strip -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      <span>Illustration</span>
+      <span>Drawing</span>
+      <span>Milo Molleson</span>
+      <span>Amsterdam</span>
+      <span>Illustration</span>
+      <span>Drawing</span>
+      <span>Milo Molleson</span>
+      <span>Amsterdam</span>
+      <span>Illustration</span>
+      <span>Drawing</span>
+      <span>Milo Molleson</span>
+      <span>Amsterdam</span>
+      <span>Illustration</span>
+      <span>Drawing</span>
+      <span>Milo Molleson</span>
+      <span>Amsterdam</span>
+    </div>
+  </div>
+
+  <section id="about" class="about-strip">
+    <div>
+      <h2>About</h2>
+      <p>
+        A short paragraph about you and your practice goes here.
+        Where you're based, what draws you to illustration,
+        the themes or ideas that run through your work.
+        Keep it brief — let the images speak.
+      </p>
+    </div>
+    <div>
+      <h2>Exhibitions &amp; previous work</h2>
+      <p>
+        Selected shows, residencies, and published work.
+      </p>
+      <div class="exhibitions-link">
+        <a href="exhibitions.html">View full list →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Milo Molleson</p>
+    <p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
